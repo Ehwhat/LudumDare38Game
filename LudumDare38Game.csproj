@@ -80,6 +80,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Camera\CameraController.cs" />
     <Compile Include="Assets\Scripts\Clouds\CloudsController.cs" />
+    <Compile Include="Assets\Scripts\Menu.cs" />
     <Compile Include="Assets\Scripts\Movement\PlanetController.cs" />
     <Compile Include="Assets\Scripts\Movement\ShipMovementController.cs" />
     <Compile Include="Assets\Scripts\Movement\SphericalMovementController.cs" />

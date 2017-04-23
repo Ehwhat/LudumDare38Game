@@ -27,11 +27,13 @@ public class ShipMovementController : SphericalMovementController, IDamageableOb
     private bool _isDashing;
     private bool _isColliding;
 
-    void Start()
+
+    void Awake()
     {
-        base.Start();
+        base.Awake();
         SetPosition(_positionOnPlane.x, _positionOnPlane.y);
         RotateBy(_currentTurnAngle);
+        Movement();
         _timeSinceLastDash = -_dashCooldown;
         _originalRadius = _radius;
     }
@@ -54,11 +56,14 @@ public class ShipMovementController : SphericalMovementController, IDamageableOb
 
     protected void ShipMovementStep(float turnControl)
     {
-        CalulateShipBuoyancy();
-        RotateBy(GetCurrentTurnAngle(turnControl));
-        _shipAnimator.SetFloat("Direction", Mathf.Clamp(_currentTurnAngle,-1,1));
-        TranslateBy((GetCurrentVelocity() * Time.fixedDeltaTime).x, (GetCurrentVelocity() * Time.fixedDeltaTime).y);
-        _rigidbody.velocity = GetCurrentVelocity();
+        if (_isActive)
+        {
+            CalulateShipBuoyancy();
+            RotateBy(GetCurrentTurnAngle(turnControl));
+            _shipAnimator.SetFloat("Direction", Mathf.Clamp(_currentTurnAngle, -1, 1));
+            TranslateBy((GetCurrentVelocity() * Time.fixedDeltaTime).x, (GetCurrentVelocity() * Time.fixedDeltaTime).y);
+            _rigidbody.velocity = GetCurrentVelocity();
+        }
         Movement();
     }
 

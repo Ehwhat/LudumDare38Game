@@ -94,7 +94,6 @@ public class CivShipController : ShipMovementController {
                 bestScore = score;
             }
         }
-        Debug.Log(bestPoint);
         return bestPoint;
     }
 
@@ -111,7 +110,6 @@ public class CivShipController : ShipMovementController {
 
     float SteerToPoint(Vector2 pointOnPlane)
     {
-        Debug.Log(Vector2.Angle(_positionOnPlane, pointOnPlane));
         float angleStep = Mathf.Lerp(_rotationalAngle, Vector2.Angle(_positionOnPlane, pointOnPlane), Time.deltaTime);
         return(Vector2.Angle(_positionOnPlane, pointOnPlane)*Time.deltaTime);
     }

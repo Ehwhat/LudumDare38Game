@@ -15,8 +15,8 @@ public class ProjectileController : SphericalMovementController {
     private Vector3 _velocity = Vector3.zero;
 
 	// Use this for initialization
-	void Start () {
-        base.Start();
+	void Awake () {
+        base.Awake();
         //Initialise(_direction, transform.forward);
 	}
 
@@ -47,10 +47,9 @@ public class ProjectileController : SphericalMovementController {
                     if (damage != null)
                     {
                         damage.OnHit(this);
-                        OnHit();
-
                     }
                 }
+                OnHit();
             }
             Movement();
         }

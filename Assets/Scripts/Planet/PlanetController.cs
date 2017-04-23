@@ -9,10 +9,17 @@ public class PlanetController : MonoBehaviour {
     public GameObject _meshHolder;
     public WaterController _waterController;
 
+    public GameObject[] obsticlePrefabs;
+
     public void Update()
     {
         _meshHolder.transform.localScale = Vector3.one * ((_radius* _radiusModifier) * 2);
         _waterController.ApplyModifier(_radiusModifier);
+    }
+
+    public void PopulatePlanet()
+    {
+
     }
 
     public void AlignToPlanet(Transform body)

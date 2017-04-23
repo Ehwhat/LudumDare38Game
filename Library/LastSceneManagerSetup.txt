@@ -1,4 +1,8 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scene/Rocky Planet.unity
+=======
+- path: Assets/Scene/Levels/Level0.unity
+>>>>>>> refs/remotes/origin/master
   isLoaded: 1
   isActive: 1

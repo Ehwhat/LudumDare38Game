@@ -15,6 +15,13 @@ public class CameraController : MonoBehaviour {
     public float _maxRadius = 125f;
 
     [SerializeField]
+    public bool _enableControls = true;
+    [SerializeField]
+    public bool _followTarget = true;
+    [SerializeField]
+    public bool _isActive = true;
+
+    [SerializeField]
     private float _radius = 10;
     [SerializeField]
     private float _polar;
@@ -31,8 +38,17 @@ public class CameraController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        HandlePlayerInput();
-        CameraMovementStep();
+        if (_isActive)
+        {
+            if (_enableControls)
+            {
+                HandlePlayerInput();
+            }
+            if (_followTarget)
+            {
+                CameraMovementStep();
+            }
+        }
     }
 
     void HandlePlayerInput()
@@ -61,7 +77,7 @@ public class CameraController : MonoBehaviour {
 
     void CameraMovementStep()
     {
-        transform.localPosition = (_targetTransform.transform.up + SphericalToCartesian(_radius, _polar, _elevation));
+        transform.position = _targetTransform.position + ((_targetTransform.rotation * Quaternion.Euler(_targetTransform.forward)) * SphericalToCartesian(_radius, _polar, _elevation));
         transform.LookAt(_targetTransform,_targetTransform.up);
     }
 

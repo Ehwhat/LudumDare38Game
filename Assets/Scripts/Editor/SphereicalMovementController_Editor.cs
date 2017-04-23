@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(SphericalMovementController))]
+[CustomEditor(typeof(SphericalMovementController), true)]
 public class SphereicalMovementController_Editor : Editor {
 
     bool _updatePosition;

@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Movement\PlayerShipController.cs" />
      <Compile Include="Assets\Scripts\Movement\ShipMovementController.cs" />
      <Compile Include="Assets\Scripts\Movement\SphericalMovementController.cs" />
+     <Compile Include="Assets\Scripts\Movement\StaticObjectController.cs" />
      <Compile Include="Assets\Scripts\Pickups\FuelPickup.cs" />
      <Compile Include="Assets\Scripts\Pickups\PickupController.cs" />
      <Compile Include="Assets\Scripts\Planet\PlanetController.cs" />

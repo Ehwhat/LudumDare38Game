@@ -14,9 +14,20 @@ public class WaterController : MonoBehaviour {
     public float noiseStrength = 1f;
     public float noiseWalk = 1f;
 
+    private float o_scale = 0.1f;
+    private float o_speed = 1.0f;
+    private float o_waveDistance = 1f;
+    private float o_noiseStrength = 1f;
+    private float o_noiseWalk = 1f;
+
     // Use this for initialization
     void Start () {
         instance = this;
+        o_scale = scale;
+        o_speed = speed;
+        o_waveDistance = waveDistance;
+        o_noiseStrength = noiseStrength;
+        o_noiseWalk = noiseWalk;
 	}
 
     void Update()
@@ -29,7 +40,15 @@ public class WaterController : MonoBehaviour {
         Shader.SetGlobalFloat("_WaterNoiseWalk", noiseWalk);
     }
 
-    //Get the y coordinate from whatever wavetype we are using
+    public void ApplyModifier(float mod = 1)
+    {
+        scale = o_scale / mod;
+        speed = o_speed / mod;
+        waveDistance = o_waveDistance / mod;
+        noiseStrength = o_noiseStrength * mod;
+        noiseWalk = o_noiseWalk * mod;
+    }
+
     public float GetWaveYPos(Vector3 position, float timeSinceStart)
     {
         if (isMoving)
@@ -43,10 +62,6 @@ public class WaterController : MonoBehaviour {
 
     }
 
-    //Find the distance from a vertice to water
-    //Make sure the position is in global coordinates
-    //Positive if above water
-    //Negative if below water
     public float DistanceToWater(Vector3 position, float timeSinceStart)
     {
         float waterHeight = GetWaveYPos(position, timeSinceStart);

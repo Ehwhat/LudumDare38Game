@@ -61,7 +61,7 @@ public class CameraController : MonoBehaviour {
 
     void CameraMovementStep()
     {
-        transform.localPosition = (_targetTransform.transform.up + SphericalToCartesian(_radius, _polar, _elevation));
+        transform.position = _targetTransform.position + ((_targetTransform.rotation * Quaternion.Euler(_targetTransform.forward)) * SphericalToCartesian(_radius, _polar, _elevation));
         transform.LookAt(_targetTransform,_targetTransform.up);
     }
 
